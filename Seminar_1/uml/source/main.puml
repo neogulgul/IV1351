@@ -6,8 +6,8 @@
 
 hide circle
 
-skinparam DefaultFontName Monospaced
-skinparam DefaultFontSize 16
+skinparam DefaultFontName  Monospaced
+skinparam DefaultFontSize  16
 skinparam DefaultFontStyle plain
 
 '
@@ -16,103 +16,103 @@ skinparam DefaultFontStyle plain
 
 entity "Lesson" as lesson
 {
-	skillLevel NOT NULL
+	skillLevel
 }
 
 entity "LessonPayment" as lessonPayment
 {
-	skillLevel      NOT NULL
-	lessonType      NOT NULL
-	timeOfLesson    NOT NULL
-	siblingDiscount NOT NULL
+	skillLevel
+	lessonType
+	timeOfLesson
+	siblingDiscount
 }
 
 entity "Individual" as lessonIndividual
 {
-	instrumentFocus NOT NULL
+	instrumentFocus
 }
 
 entity "MultiplePeople" as lessonMultiplePeople
 {
-	numberOfPlacesMinimum 1..* NOT NULL
-	numberOfPlacesMaximum 1..* NOT NULL
+	numberOfPlacesMinimum 1..*
+	numberOfPlacesMaximum 1..*
 }
 
 entity "Group" as lessonGroup
 {
-	instrumentFocus NOT NULL
+	instrumentFocus
 }
 
 entity "Ensemble" as lessonEnsemble
 {
-	genre NOT NULL
+	genre
 }
 
 entity "Appointment" as appointment
 {
-	studentId    NOT NULL
-	instructorId NOT NULL
-	startTime    NOT NULL
-	duration     NOT NULL
+	studentId
+	instructorId
+	startTime
+	duration
 }
 
 entity "TimeSlot" as timeSlot
 {
-	startTime NOT NULL
-	duration  NOT NULL
+	startTime
+	duration
 }
 
 entity "Person" as person
 {
 	personNumber UNIQUE
-	firstName  NOT NULL
-	lastName   NOT NULL
+	firstName
+	lastName
 }
 
 entity "Address" as address
 {
-	city    NOT NULL
-	zipCode NOT NULL
-	street  NOT NULL
+	city
+	zipCode
+	street
 }
 
 entity "ContactDetails" as contact
 {
-	email       NOT NULL
-	phoneNumber NOT NULL
+	email
+	phoneNumber
 }
 
 entity "Student" as student
 {
-	studentId UNIQUE NOT NULL
-	siblings             0..*
-	contactPersons       0..*
+	studentId      UNIQUE
+	siblings         0..*
+	contactPersons   0..*
 }
 
 entity "Instructor" as instructor
 {
-	instructorId            UNIQUE NOT NULL
-	instrumentsProficientWith 1..* NOT NULL
+	instructorId              UNIQUE
+	instrumentsProficientWith   1..*
 }
 
 entity "InstrumentStock" as instrumentStock
 {
-	instrumentId   UNIQUE NOT NULL
-	instrumentType        NOT NULL
-	brand                 NOT NULL
-	quantity 0..*         NOT NULL
+	instrumentId   UNIQUE
+	instrumentType
+	brand
+	quantity         0..*
 }
 
 entity "Rental" as rental
 {
-	rentalId          UNIQUE NOT NULL
-	leaseMonths 1..12        NOT NULL
+	rentalId    UNIQUE
+	leaseMonths  1..12
 }
 
 entity "RentalPayment" as rentalPayment
 {
-	rentalId     NOT NULL
-	timeOfRental NOT NULL
+	rentalId
+	timeOfRental
 }
 
 '
@@ -158,13 +158,14 @@ timeSlot "1" - "1" lessonMultiplePeople : schedules >
 '
 
 note as N1
-	Attributes have a cardinality of 0..1 unless specified otherwise
+	Attributes have a cardinality of 1 unless specified otherwise,
+	they also and do not have to be unique.
 
 	The attributes of payment entities
 	(**LessonPayment** and **RentalPayment**)
 	are used to calculate the final cost of the payment.
 	Since the price is derived from the other attributes
-	we avoid having to explicitly store the it.
+	we avoid having to explicitly store it.
 end note
 
 note right of lesson
