@@ -1,15 +1,19 @@
-.PHONY: all clean
-
-PUML_FILES := main.puml
+.PHONY: yes no both clean
 
 SOURCE_DIR := source
 OUTPUT_DIR := output
 FORMAT     := pdf
 
-PUML_FILES := $(patsubst %, $(SOURCE_DIR)/%, $(PUML_FILES))
+.DEFAULT_GOAL := yes
 
-all:
-	plantuml -output ../$(OUTPUT_DIR) -t$(FORMAT) $(PUML_FILES)
+yes: inheritence.puml
+
+no: no_inheritence.puml
+
+both: yes no
+
+%.puml:
+	plantuml -output ../$(OUTPUT_DIR) -t$(FORMAT) $(SOURCE_DIR)/$@
 
 clean:
 	rm -rf $(OUTPUT_DIR)
