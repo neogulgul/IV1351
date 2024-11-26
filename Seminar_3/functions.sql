@@ -14,27 +14,27 @@ CREATE FUNCTION insert_lesson_individual
 RETURNS INT AS
 $$
 DECLARE
-	p_start_timestamp TIMESTAMP;
-	p_end_timestamp   TIMESTAMP;
-	new_lesson_id     INT;
+	v_start_timestamp TIMESTAMP;
+	v_end_timestamp   TIMESTAMP;
+	v_new_lesson_id   INT;
 BEGIN
 	-- Creating timestamps
-	p_start_timestamp := p_start_date + p_start_time;
-	p_end_timestamp   := p_start_timestamp + p_duration;
+	v_start_timestamp := p_start_date + p_start_time;
+	v_end_timestamp   := v_start_timestamp + p_duration;
 
 	INSERT INTO lesson
 		(instructor_id, lesson_type, skill_level, start_time, end_time)
 	VALUES
-		(p_instructor_id, 'Individual', p_skill_level, p_start_timestamp, p_end_timestamp)
+		(p_instructor_id, 'Individual', p_skill_level, v_start_timestamp, v_end_timestamp)
 	RETURNING
-		id INTO new_lesson_id;
+		id INTO v_new_lesson_id;
 
 	INSERT INTO lesson_individual
 		(lesson_id, instrument_focus)
 	VALUES
-		(new_lesson_id, p_instrument_focus);
+		(v_new_lesson_id, p_instrument_focus);
 
-	RETURN new_lesson_id;
+	RETURN v_new_lesson_id;
 END;
 $$
 LANGUAGE plpgsql;
@@ -57,27 +57,27 @@ CREATE FUNCTION insert_lesson_group
 RETURNS INT AS
 $$
 DECLARE
-	p_start_timestamp TIMESTAMP;
-	p_end_timestamp   TIMESTAMP;
-	new_lesson_id     INT;
+	v_start_timestamp TIMESTAMP;
+	v_end_timestamp   TIMESTAMP;
+	v_new_lesson_id   INT;
 BEGIN
 	-- Creating timestamps
-	p_start_timestamp := p_start_date + p_start_time;
-	p_end_timestamp   := p_start_timestamp + p_duration;
+	v_start_timestamp := p_start_date + p_start_time;
+	v_end_timestamp   := v_start_timestamp + p_duration;
 
 	INSERT INTO lesson
 		(instructor_id, lesson_type, skill_level, start_time, end_time)
 	VALUES
-		(p_instructor_id, 'Group', p_skill_level, p_start_timestamp, p_end_timestamp)
+		(p_instructor_id, 'Group', p_skill_level, v_start_timestamp, v_end_timestamp)
 	RETURNING
-		id INTO new_lesson_id;
+		id INTO v_new_lesson_id;
 
 	INSERT INTO lesson_group
 		(lesson_id, number_of_places_min, number_of_places_max, instrument_focus)
 	VALUES
-		(new_lesson_id, p_number_of_places_min, p_number_of_places_max, p_instrument_focus);
+		(v_new_lesson_id, p_number_of_places_min, p_number_of_places_max, p_instrument_focus);
 
-	RETURN new_lesson_id;
+	RETURN v_new_lesson_id;
 END;
 $$
 LANGUAGE plpgsql;
@@ -100,27 +100,27 @@ CREATE FUNCTION insert_lesson_ensemble
 RETURNS INT AS
 $$
 DECLARE
-	p_start_timestamp TIMESTAMP;
-	p_end_timestamp   TIMESTAMP;
-	new_lesson_id     INT;
+	v_start_timestamp TIMESTAMP;
+	v_end_timestamp   TIMESTAMP;
+	v_new_lesson_id   INT;
 BEGIN
 	-- Creating timestamps
-	p_start_timestamp := p_start_date + p_start_time;
-	p_end_timestamp   := p_start_timestamp + p_duration;
+	v_start_timestamp := p_start_date + p_start_time;
+	v_end_timestamp   := v_start_timestamp + p_duration;
 
 	INSERT INTO lesson
 		(instructor_id, lesson_type, skill_level, start_time, end_time)
 	VALUES
-		(p_instructor_id, 'Ensemble', p_skill_level, p_start_timestamp, p_end_timestamp)
+		(p_instructor_id, 'Ensemble', p_skill_level, v_start_timestamp, v_end_timestamp)
 	RETURNING
-		id INTO new_lesson_id;
+		id INTO v_new_lesson_id;
 
 	INSERT INTO lesson_ensemble
 		(lesson_id, number_of_places_min, number_of_places_max, genre)
 	VALUES
-		(new_lesson_id, p_number_of_places_min, p_number_of_places_max, p_genre);
+		(v_new_lesson_id, p_number_of_places_min, p_number_of_places_max, p_genre);
 
-	RETURN new_lesson_id;
+	RETURN v_new_lesson_id;
 END;
 $$
 LANGUAGE plpgsql;
@@ -165,6 +165,62 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--
+-- Create relations between two siblings more easily
+--
+CREATE FUNCTION add_sibling_relation
+(
+	p_student_id_a INT,
+	p_student_id_b INT
+)
+RETURNS VOID AS
+$$
+BEGIN
+	IF p_student_id_a = p_student_id_b THEN
+		RAISE EXCEPTION 'Student A and B can not be the same!';
+	END IF;
+
+	IF NOT EXISTS (SELECT 1 FROM student WHERE person_id = p_student_id_a) THEN
+		RAISE EXCEPTION 'Student A where person_id = % does not exist.', p_student_id_a;
+	END IF;
+
+	IF NOT EXISTS (SELECT 1 FROM student WHERE person_id = p_student_id_b) THEN
+		RAISE EXCEPTION 'Student B where person_id = % does not exist.', p_student_id_b;
+	END IF;
+
+	INSERT INTO sibling_junction
+		(student_id, sibling_id)
+	VALUES
+		(p_student_id_a, p_student_id_b),
+		(p_student_id_b, p_student_id_a)
+	ON CONFLICT (student_id, sibling_id) DO NOTHING;
+END;
+$$ LANGUAGE plpgsql;
+
+--
+-- Create relations between multiple siblings more easily
+--
+CREATE FUNCTION add_sibling_relation_multiple
+(
+	p_student_ids INT[]
+)
+RETURNS VOID AS
+$$
+DECLARE
+	v_student_id_a INT;
+	v_student_id_b INT;
+BEGIN
+	FOREACH v_student_id_a IN ARRAY p_student_ids
+	LOOP
+		FOREACH v_student_id_b IN ARRAY p_student_ids
+		LOOP
+			IF v_student_id_a != v_student_id_b THEN
+				PERFORM add_sibling_relation(v_student_id_a, v_student_id_b);
+			END IF;
+		END LOOP;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql;
 
 --
 -- Trigger to make sure an instructor is proficient in the given instrument_focus.

@@ -1,0 +1,600 @@
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (278,37),
+  (227,23),
+  (230,34),
+  (184,47),
+  (144,61),
+  (35,55),
+  (23,45),
+  (130,71),
+  (238,98),
+  (85,81);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (175,32),
+  (84,38),
+  (69,77),
+  (90,96),
+  (286,83),
+  (78,32),
+  (234,52),
+  (185,87),
+  (277,31),
+  (177,79);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (113,96),
+  (164,73),
+  (101,57),
+  (210,83),
+  (280,52),
+  (76,83),
+  (98,49),
+  (142,96),
+  (199,70),
+  (140,71);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (289,81),
+  (78,38),
+  (60,59),
+  (267,37),
+  (43,65),
+  (185,93),
+  (166,69),
+  (161,86),
+  (203,27),
+  (48,76);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (153,33),
+  (51,52),
+  (248,93),
+  (292,45),
+  (8,83),
+  (75,98),
+  (140,81),
+  (155,25),
+  (165,59),
+  (135,24);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (249,80),
+  (164,24),
+  (269,71),
+  (5,87),
+  (120,45),
+  (184,78),
+  (206,32),
+  (38,68),
+  (86,70),
+  (176,92);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (180,79),
+  (134,72),
+  (19,23),
+  (33,85),
+  (187,57),
+  (130,59),
+  (260,94),
+  (122,20),
+  (286,46),
+  (92,22);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (38,59),
+  (150,84),
+  (188,28),
+  (3,71),
+  (192,96),
+  (249,30),
+  (246,28),
+  (210,97),
+  (183,56),
+  (145,29);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (51,80),
+  (188,53),
+  (196,85),
+  (85,87),
+  (214,22),
+  (150,93),
+  (59,73),
+  (185,22),
+  (219,66),
+  (144,52);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (136,56),
+  (161,36),
+  (197,41),
+  (53,66),
+  (142,58),
+  (205,75),
+  (189,26),
+  (273,71),
+  (238,27),
+  (263,95);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (74,48),
+  (133,58),
+  (8,47),
+  (237,38),
+  (220,23),
+  (98,76),
+  (228,41),
+  (15,48),
+  (13,80),
+  (91,90);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (53,65),
+  (11,29),
+  (22,46),
+  (252,90),
+  (202,42),
+  (210,41),
+  (241,62),
+  (271,22),
+  (263,23),
+  (91,25);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (89,20),
+  (120,78),
+  (218,59),
+  (282,32),
+  (143,90),
+  (266,60),
+  (166,84),
+  (252,66),
+  (200,44),
+  (138,47);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (194,57),
+  (54,22),
+  (79,33),
+  (292,37),
+  (287,93),
+  (8,57),
+  (285,70),
+  (113,42),
+  (71,37),
+  (50,30);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (152,64),
+  (27,25),
+  (75,61),
+  (58,68),
+  (75,75),
+  (15,51),
+  (254,39),
+  (277,91),
+  (17,90),
+  (249,83);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (81,74),
+  (86,68),
+  (212,71),
+  (135,33),
+  (289,40),
+  (95,38),
+  (149,60),
+  (259,21),
+  (264,90),
+  (123,81);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (179,64),
+  (155,63),
+  (141,58),
+  (277,28),
+  (299,98),
+  (155,77),
+  (211,94),
+  (41,75),
+  (199,86),
+  (73,22);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (65,73),
+  (249,37),
+  (133,70),
+  (136,89),
+  (15,62),
+  (154,34),
+  (135,28),
+  (63,23),
+  (9,66),
+  (61,87);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (95,36),
+  (86,54),
+  (254,34),
+  (6,36),
+  (152,96),
+  (218,76),
+  (121,46),
+  (250,25),
+  (250,77),
+  (9,92);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (151,30),
+  (266,52),
+  (78,37),
+  (280,90),
+  (110,52),
+  (220,78),
+  (174,38),
+  (237,49),
+  (179,27),
+  (245,38);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (75,49),
+  (96,54),
+  (158,38),
+  (254,32),
+  (142,97),
+  (242,50),
+  (226,98),
+  (165,51),
+  (240,92),
+  (280,64);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (267,84),
+  (252,53),
+  (150,66),
+  (34,69),
+  (187,42),
+  (143,30),
+  (208,31),
+  (89,34),
+  (76,82),
+  (76,71);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (251,87),
+  (127,24),
+  (65,67),
+  (52,74),
+  (54,84),
+  (94,54),
+  (190,21),
+  (54,49),
+  (59,60),
+  (231,26);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (37,88),
+  (260,57),
+  (148,66),
+  (245,85),
+  (134,36),
+  (30,35),
+  (146,67),
+  (95,71),
+  (129,70),
+  (288,40);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (192,33),
+  (76,24),
+  (238,37),
+  (113,72),
+  (213,62),
+  (28,58),
+  (210,81),
+  (97,60),
+  (271,24),
+  (112,97);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (219,39),
+  (2,87),
+  (111,37),
+  (52,62),
+  (106,38),
+  (187,29),
+  (85,46),
+  (227,40),
+  (232,90),
+  (284,77);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (43,32),
+  (177,74),
+  (209,98),
+  (27,48),
+  (223,21),
+  (203,80),
+  (2,96),
+  (64,99),
+  (96,49),
+  (200,84);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (179,58),
+  (282,80),
+  (207,93),
+  (69,24),
+  (209,48),
+  (294,56),
+  (196,51),
+  (135,66),
+  (115,89),
+  (199,24);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (27,80),
+  (69,62),
+  (100,29),
+  (89,30),
+  (183,95),
+  (91,68),
+  (215,34),
+  (134,29),
+  (4,44),
+  (184,51);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (222,44),
+  (262,93),
+  (51,70),
+  (186,87),
+  (183,23),
+  (71,57),
+  (53,97),
+  (154,43),
+  (95,91),
+  (94,62);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (27,59),
+  (203,48),
+  (240,69),
+  (174,30),
+  (47,55),
+  (41,39),
+  (79,72),
+  (112,25),
+  (17,76),
+  (198,44);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (184,74),
+  (45,96),
+  (155,85),
+  (4,53),
+  (20,98),
+  (259,71),
+  (127,94),
+  (166,89),
+  (211,48),
+  (94,81);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (123,40),
+  (97,84),
+  (220,90),
+  (41,35),
+  (222,96),
+  (182,92),
+  (52,90),
+  (105,60),
+  (288,65),
+  (207,60);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (33,95),
+  (10,26),
+  (102,37),
+  (217,62),
+  (85,70),
+  (168,39),
+  (248,29),
+  (28,59),
+  (291,61),
+  (33,29);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (246,60),
+  (141,59),
+  (265,74),
+  (87,93),
+  (241,96),
+  (70,64),
+  (14,85),
+  (234,50),
+  (114,41),
+  (164,39);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (111,52),
+  (195,40),
+  (1,66),
+  (246,32),
+  (44,43),
+  (232,77),
+  (42,71),
+  (4,69),
+  (140,98),
+  (300,22);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (89,48),
+  (77,64),
+  (162,89),
+  (272,60),
+  (289,67),
+  (45,92),
+  (83,91),
+  (245,76),
+  (99,29),
+  (118,56);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (256,38),
+  (184,28),
+  (117,99),
+  (251,60),
+  (11,59),
+  (203,97),
+  (88,74),
+  (165,71),
+  (217,97),
+  (149,49);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (190,92),
+  (98,90),
+  (156,60),
+  (275,73),
+  (273,82),
+  (221,25),
+  (225,43),
+  (118,35),
+  (6,79),
+  (130,98);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (158,23),
+  (205,65),
+  (31,79),
+  (61,95),
+  (164,88),
+  (126,33),
+  (199,69),
+  (49,42),
+  (51,53),
+  (29,33);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (88,88),
+  (14,98),
+  (155,55),
+  (26,75),
+  (134,97),
+  (110,34),
+  (184,49),
+  (188,69),
+  (93,60),
+  (190,51);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (21,36),
+  (128,46),
+  (144,46),
+  (45,70),
+  (14,60),
+  (124,65),
+  (229,27),
+  (260,46),
+  (21,29),
+  (158,36);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (48,42),
+  (19,59),
+  (267,90),
+  (112,62),
+  (132,93),
+  (220,53),
+  (103,77),
+  (16,45),
+  (210,68),
+  (226,57);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (160,58),
+  (270,22),
+  (283,36),
+  (139,34),
+  (250,99),
+  (38,64),
+  (71,94),
+  (109,59),
+  (55,34),
+  (156,40);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (16,81),
+  (240,76),
+  (287,49),
+  (254,74),
+  (40,45),
+  (201,27),
+  (94,60),
+  (232,95),
+  (40,25),
+  (165,56);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (211,72),
+  (264,54),
+  (234,59),
+  (296,79),
+  (252,77),
+  (29,22),
+  (146,96),
+  (12,40),
+  (28,35),
+  (289,34);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (220,98),
+  (169,80),
+  (259,39),
+  (100,88),
+  (119,79),
+  (30,82),
+  (241,37),
+  (64,82),
+  (167,96),
+  (69,45);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (64,98),
+  (253,29),
+  (60,79),
+  (70,44),
+  (289,94),
+  (252,50),
+  (54,45),
+  (269,33),
+  (213,43),
+  (161,66);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (47,61),
+  (89,77),
+  (191,98),
+  (142,22),
+  (223,48),
+  (292,49),
+  (5,64),
+  (224,77),
+  (221,63),
+  (61,54);
+INSERT INTO student_lesson_booking (lesson_id,student_id)
+VALUES
+  (20,24),
+  (176,76),
+  (136,30),
+  (233,65),
+  (29,36),
+  (157,76),
+  (158,70),
+  (82,30),
+  (110,48),
+  (141,93);

@@ -1,5 +1,5 @@
-CREATE TYPE lesson_type as ENUM ('Individual', 'Group', 'Ensemble');
-CREATE TYPE skill_level as ENUM ('Beginner', 'Intermediate', 'Advanced');
+CREATE TYPE lesson_type AS ENUM ('Individual', 'Group', 'Ensemble');
+CREATE TYPE skill_level AS ENUM ('Beginner', 'Intermediate', 'Advanced');
 
 CREATE TABLE person
 (
