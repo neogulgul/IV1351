@@ -6,8 +6,12 @@ CREATE DATABASE soundgood;
 
 \c soundgood
 
-\i soundgood_tables.sql
+\i tables.sql
 
-\i soundgood_data.sql
+\i functions.sql
+
+\i triggers.sql
+
+\i data.sql
 
 \c postgres
