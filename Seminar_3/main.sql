@@ -14,4 +14,6 @@ CREATE DATABASE soundgood;
 
 \i data.sql
 
+\i queries.sql
+
 \c postgres

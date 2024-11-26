@@ -126,6 +126,47 @@ $$
 LANGUAGE plpgsql;
 
 --
+-- Create instructors more easily
+--
+CREATE FUNCTION insert_instructor
+(
+	p_person_id                  INT,
+	p_instrument_proficiency_ids INT[]
+)
+RETURNS VOID AS
+$$
+DECLARE
+	v_instrument_proficiency_id INT;
+BEGIN
+	-- Check if the person exists in the person table
+	IF NOT EXISTS (SELECT 1 FROM person WHERE id = p_person_id) THEN
+		RAISE EXCEPTION 'Person with ID % does not exist', p_person_id;
+	END IF;
+
+	-- Insert the person as an instructor
+	INSERT INTO instructor (person_id)
+	VALUES (p_person_id)
+	ON CONFLICT (person_id) DO NOTHING;
+
+	-- For each instrument proficiency in the provided array, insert the association
+	FOREACH v_instrument_proficiency_id IN ARRAY p_instrument_proficiency_ids
+	LOOP
+		-- Check if the instrument proficiency exists in the instrument_proficiency table
+		IF NOT EXISTS (SELECT 1 FROM instrument_proficiency WHERE id = v_instrument_proficiency_id) THEN
+			RAISE EXCEPTION 'Instrument proficiency with ID % does not exist', v_instrument_proficiency_id;
+		END IF;
+
+		-- Insert the instrument proficiency association
+		INSERT INTO instructor_instrument_proficiency (instructor_id, instrument_proficiency_id)
+		VALUES (p_person_id, v_instrument_proficiency_id)
+		ON CONFLICT (instructor_id, instrument_proficiency_id) DO NOTHING;
+	END LOOP;
+
+END;
+$$ LANGUAGE plpgsql;
+
+
+--
 -- Trigger to make sure an instructor is proficient in the given instrument_focus.
 --
 CREATE FUNCTION validate_instrument_focus()
