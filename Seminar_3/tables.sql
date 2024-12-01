@@ -1,3 +1,5 @@
+\i functions/triggers.sql
+
 CREATE TYPE lesson_type AS ENUM ('Individual', 'Group', 'Ensemble');
 CREATE TYPE skill_level AS ENUM ('Beginner', 'Intermediate', 'Advanced');
 
@@ -169,3 +171,13 @@ CREATE TABLE rental_payment
 	PRIMARY KEY (student_id, instrument_id),
 	FOREIGN KEY (student_id, instrument_id) REFERENCES rental(student_id, instrument_id)
 );
+
+CREATE TRIGGER lesson_individual_validate_instrument_focus
+BEFORE INSERT OR UPDATE ON lesson_individual
+FOR EACH ROW
+EXECUTE FUNCTION validate_instrument_focus();
+
+CREATE TRIGGER lesson_group_validate_instrument_focus
+BEFORE INSERT OR UPDATE ON lesson_group
+FOR EACH ROW
+EXECUTE FUNCTION validate_instrument_focus();

@@ -1,3 +1,5 @@
+\i functions/data_helper.sql
+
 \i data/person.sql
 
 \i data/instructor.sql
