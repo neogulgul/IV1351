@@ -1,16 +1,10 @@
-.PHONY: yes no both clean
+.PHONY: clean
 
 SOURCE_DIR := source
 OUTPUT_DIR := output
 FORMAT     := pdf
 
-.DEFAULT_GOAL := yes
-
-yes: inheritence.puml
-
-no: no_inheritence.puml
-
-both: yes no
+all: main.puml
 
 %.puml:
 	plantuml -output ../$(OUTPUT_DIR) -t$(FORMAT) $(SOURCE_DIR)/$@

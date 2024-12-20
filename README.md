@@ -1,4 +1,9 @@
 # IV1351
+## Seminar 2
+Files are found in the `Seminar_2` directory.
+`tables.sql` creates the tables and `data.sql` inserts some data into said tables.
+`testing.sql` is just there to see if stuff works as intended, and `main.sql` combines all three to make the testing process easier.
+
 ## Seminar 3
 Files are found in the `Seminar_3` directory.
 ### Setup

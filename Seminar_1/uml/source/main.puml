@@ -1,4 +1,4 @@
-@startuml no_inheritence
+@startuml main
 
 '
 ' SETTINGS
@@ -14,6 +14,11 @@ skinparam DefaultFontStyle      plain
 ' ENTITIES
 '
 
+entity "Lesson" as lesson
+{
+	skillLevel
+}
+
 entity "LessonPayment" as lessonPayment
 {
 	skillLevel
@@ -25,28 +30,22 @@ entity "LessonPayment" as lessonPayment
 
 entity "Individual" as lessonIndividual
 {
-	skillLevel
-
 	instrumentFocus
+}
+
+entity "MultiplePeople" as lessonMultiplePeople
+{
+	numberOfPlacesMinimum
+	numberOfPlacesMaximum
 }
 
 entity "Group" as lessonGroup
 {
-	skillLevel
-
-	numberOfPlacesMinimum
-	numberOfPlacesMaximum
-
 	instrumentFocus
 }
 
 entity "Ensemble" as lessonEnsemble
 {
-	skillLevel
-
-	numberOfPlacesMinimum
-	numberOfPlacesMaximum
-
 	genre
 }
 
@@ -64,6 +63,13 @@ entity "TimeSlot" as timeSlot
 	duration
 }
 
+entity "Person" as person
+{
+	personNumber UNIQUE
+	firstName
+	lastName
+}
+
 entity "Address" as address
 {
 	city
@@ -79,10 +85,6 @@ entity "ContactDetails" as contact
 
 entity "Student" as student
 {
-	personNumber UNIQUE
-	firstName
-	lastName
-
 	studentId      UNIQUE
 	siblings         0..*
 	contactPersons   0..*
@@ -90,10 +92,6 @@ entity "Student" as student
 
 entity "Instructor" as instructor
 {
-	personNumber UNIQUE
-	firstName
-	lastName
-
 	instructorId              UNIQUE
 	instrumentsProficientWith   1..*
 }
@@ -130,43 +128,41 @@ entity "RentalPayment" as rentalPayment
 ' RELATIONS
 '
 
-student "1" - "1" address : lives at >
+lesson <|-- lessonIndividual
 
-address "1" - "1" instructor : lives at <
+lesson <|-- lessonMultiplePeople
 
-contact "1" --- "1" student : used to contact >
+lessonMultiplePeople <|-- lessonGroup
 
-contact "1" --- "1" instructor : used to contact >
+lessonMultiplePeople <|-- lessonEnsemble
 
-lessonPayment "0..*" -- "1" student : pays <
+person <|--- student
 
-lessonPayment "0..*" -- "1" instructor : receives <
+person <|--- instructor
 
-student "1" --- "0..*" lessonIndividual : attends >
+person "1" - "1" address : lives at >
 
-student "1" --- "0..*" lessonGroup : attends >
+contact "1" - "1" person : used to contact >
 
-student "1" --- "0..*" lessonEnsemble : attends >
+student "1" --- "0..*" lesson : attends >
 
-instructor "1" --- "0..*" lessonIndividual : holds >
+student "1" -- "0..2" rental : rents >
 
-instructor "1" --- "0..*" lessonGroup : holds >
+student "1" -- "0..*" lessonPayment : pays >
 
-instructor "1" --- "0..*" lessonEnsemble : holds >
+student "1" - "0..2" rentalPayment : pays >
 
-rental "0..2" - "1" student : rents <
+instructor "1" -- "0..*" lessonPayment : receives >
 
-rental "1" -- "1" instrument : concerns >
+instructor "1" --- "0..*" lesson : holds >
 
-instrument "0..*" -- "1" instrumentStock : keeps track of <
+rental "1" -- "1" instrument : rents >
 
-rentalPayment "0..2" -- "1" student : pays <
+instrumentStock "1" -- "0..*" instrument : keeps track of >
 
-lessonIndividual "1" -- "1" appointment : schedules <
+appointment "1" - "1" lessonIndividual : schedules >
 
-lessonGroup "1" -- "1" timeSlot : schedules <
-
-lessonEnsemble "1" -- "1" timeSlot : schedules <
+timeSlot "1" - "1" lessonMultiplePeople : schedules >
 
 '
 ' NOTES
@@ -175,7 +171,9 @@ lessonEnsemble "1" -- "1" timeSlot : schedules <
 note as N1
 	Attributes have a cardinality of 1 unless specified otherwise,
 	they also and do not have to be unique.
+end note
 
+note right of lesson
 	The different skill levels:
 	- Beginner
 	- Intermediate
@@ -189,14 +187,14 @@ note right of lessonPayment
 	instructor.
 end note
 
-note left of rentalPayment
+note right of rentalPayment
 	**rentalId** will not have to be unique
 	to account for cases where a student
 	misses to pay for an instrument
 	multiple months in a row.
 end note
 
-note bottom of student
+note top of student
 	Contact persons are stored as their person number.
 	With that you can retrieve their information.
 end note
